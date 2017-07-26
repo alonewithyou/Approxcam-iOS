@@ -1,0 +1,539 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4F4EFB671F1DB25500E72992 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4EFB661F1DB25500E72992 /* AppDelegate.swift */; };
+		4F4EFB691F1DB25500E72992 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4EFB681F1DB25500E72992 /* ViewController.swift */; };
+		4F4EFB6C1F1DB25500E72992 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F4EFB6A1F1DB25500E72992 /* Main.storyboard */; };
+		4F4EFB6E1F1DB25500E72992 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F4EFB6D1F1DB25500E72992 /* Assets.xcassets */; };
+		4F4EFB711F1DB25500E72992 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F4EFB6F1F1DB25500E72992 /* LaunchScreen.storyboard */; };
+		4F4EFB7C1F1DB25500E72992 /* ApproxCamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4EFB7B1F1DB25500E72992 /* ApproxCamTests.swift */; };
+		4F4EFB871F1DB25500E72992 /* ApproxCamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4EFB861F1DB25500E72992 /* ApproxCamUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4F4EFB781F1DB25500E72992 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F4EFB5B1F1DB25500E72992 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F4EFB621F1DB25500E72992;
+			remoteInfo = ApproxCam;
+		};
+		4F4EFB831F1DB25500E72992 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F4EFB5B1F1DB25500E72992 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F4EFB621F1DB25500E72992;
+			remoteInfo = ApproxCam;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4F4EFB631F1DB25500E72992 /* ApproxCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApproxCam.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F4EFB661F1DB25500E72992 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4F4EFB681F1DB25500E72992 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4F4EFB6B1F1DB25500E72992 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4F4EFB6D1F1DB25500E72992 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4F4EFB701F1DB25500E72992 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4F4EFB721F1DB25500E72992 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F4EFB771F1DB25500E72992 /* ApproxCamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApproxCamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F4EFB7B1F1DB25500E72992 /* ApproxCamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproxCamTests.swift; sourceTree = "<group>"; };
+		4F4EFB7D1F1DB25500E72992 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F4EFB821F1DB25500E72992 /* ApproxCamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApproxCamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F4EFB861F1DB25500E72992 /* ApproxCamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproxCamUITests.swift; sourceTree = "<group>"; };
+		4F4EFB881F1DB25500E72992 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4F4EFB601F1DB25500E72992 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F4EFB741F1DB25500E72992 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F4EFB7F1F1DB25500E72992 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4F4EFB5A1F1DB25500E72992 = {
+			isa = PBXGroup;
+			children = (
+				4F4EFB651F1DB25500E72992 /* ApproxCam */,
+				4F4EFB7A1F1DB25500E72992 /* ApproxCamTests */,
+				4F4EFB851F1DB25500E72992 /* ApproxCamUITests */,
+				4F4EFB641F1DB25500E72992 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4F4EFB641F1DB25500E72992 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4F4EFB631F1DB25500E72992 /* ApproxCam.app */,
+				4F4EFB771F1DB25500E72992 /* ApproxCamTests.xctest */,
+				4F4EFB821F1DB25500E72992 /* ApproxCamUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4F4EFB651F1DB25500E72992 /* ApproxCam */ = {
+			isa = PBXGroup;
+			children = (
+				4F4EFB661F1DB25500E72992 /* AppDelegate.swift */,
+				4F4EFB681F1DB25500E72992 /* ViewController.swift */,
+				4F4EFB6A1F1DB25500E72992 /* Main.storyboard */,
+				4F4EFB6D1F1DB25500E72992 /* Assets.xcassets */,
+				4F4EFB6F1F1DB25500E72992 /* LaunchScreen.storyboard */,
+				4F4EFB721F1DB25500E72992 /* Info.plist */,
+			);
+			path = ApproxCam;
+			sourceTree = "<group>";
+		};
+		4F4EFB7A1F1DB25500E72992 /* ApproxCamTests */ = {
+			isa = PBXGroup;
+			children = (
+				4F4EFB7B1F1DB25500E72992 /* ApproxCamTests.swift */,
+				4F4EFB7D1F1DB25500E72992 /* Info.plist */,
+			);
+			path = ApproxCamTests;
+			sourceTree = "<group>";
+		};
+		4F4EFB851F1DB25500E72992 /* ApproxCamUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4F4EFB861F1DB25500E72992 /* ApproxCamUITests.swift */,
+				4F4EFB881F1DB25500E72992 /* Info.plist */,
+			);
+			path = ApproxCamUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4F4EFB621F1DB25500E72992 /* ApproxCam */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F4EFB8B1F1DB25500E72992 /* Build configuration list for PBXNativeTarget "ApproxCam" */;
+			buildPhases = (
+				4F4EFB5F1F1DB25500E72992 /* Sources */,
+				4F4EFB601F1DB25500E72992 /* Frameworks */,
+				4F4EFB611F1DB25500E72992 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ApproxCam;
+			productName = ApproxCam;
+			productReference = 4F4EFB631F1DB25500E72992 /* ApproxCam.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4F4EFB761F1DB25500E72992 /* ApproxCamTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F4EFB8E1F1DB25500E72992 /* Build configuration list for PBXNativeTarget "ApproxCamTests" */;
+			buildPhases = (
+				4F4EFB731F1DB25500E72992 /* Sources */,
+				4F4EFB741F1DB25500E72992 /* Frameworks */,
+				4F4EFB751F1DB25500E72992 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4F4EFB791F1DB25500E72992 /* PBXTargetDependency */,
+			);
+			name = ApproxCamTests;
+			productName = ApproxCamTests;
+			productReference = 4F4EFB771F1DB25500E72992 /* ApproxCamTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4F4EFB811F1DB25500E72992 /* ApproxCamUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F4EFB911F1DB25500E72992 /* Build configuration list for PBXNativeTarget "ApproxCamUITests" */;
+			buildPhases = (
+				4F4EFB7E1F1DB25500E72992 /* Sources */,
+				4F4EFB7F1F1DB25500E72992 /* Frameworks */,
+				4F4EFB801F1DB25500E72992 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4F4EFB841F1DB25500E72992 /* PBXTargetDependency */,
+			);
+			name = ApproxCamUITests;
+			productName = ApproxCamUITests;
+			productReference = 4F4EFB821F1DB25500E72992 /* ApproxCamUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4F4EFB5B1F1DB25500E72992 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Shining;
+				TargetAttributes = {
+					4F4EFB621F1DB25500E72992 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 768U6R42T9;
+						ProvisioningStyle = Automatic;
+					};
+					4F4EFB761F1DB25500E72992 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 768U6R42T9;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4F4EFB621F1DB25500E72992;
+					};
+					4F4EFB811F1DB25500E72992 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 768U6R42T9;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4F4EFB621F1DB25500E72992;
+					};
+				};
+			};
+			buildConfigurationList = 4F4EFB5E1F1DB25500E72992 /* Build configuration list for PBXProject "ApproxCam" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4F4EFB5A1F1DB25500E72992;
+			productRefGroup = 4F4EFB641F1DB25500E72992 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4F4EFB621F1DB25500E72992 /* ApproxCam */,
+				4F4EFB761F1DB25500E72992 /* ApproxCamTests */,
+				4F4EFB811F1DB25500E72992 /* ApproxCamUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4F4EFB611F1DB25500E72992 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F4EFB711F1DB25500E72992 /* LaunchScreen.storyboard in Resources */,
+				4F4EFB6E1F1DB25500E72992 /* Assets.xcassets in Resources */,
+				4F4EFB6C1F1DB25500E72992 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F4EFB751F1DB25500E72992 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F4EFB801F1DB25500E72992 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4F4EFB5F1F1DB25500E72992 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F4EFB691F1DB25500E72992 /* ViewController.swift in Sources */,
+				4F4EFB671F1DB25500E72992 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F4EFB731F1DB25500E72992 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F4EFB7C1F1DB25500E72992 /* ApproxCamTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F4EFB7E1F1DB25500E72992 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F4EFB871F1DB25500E72992 /* ApproxCamUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4F4EFB791F1DB25500E72992 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4F4EFB621F1DB25500E72992 /* ApproxCam */;
+			targetProxy = 4F4EFB781F1DB25500E72992 /* PBXContainerItemProxy */;
+		};
+		4F4EFB841F1DB25500E72992 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4F4EFB621F1DB25500E72992 /* ApproxCam */;
+			targetProxy = 4F4EFB831F1DB25500E72992 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4F4EFB6A1F1DB25500E72992 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F4EFB6B1F1DB25500E72992 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4F4EFB6F1F1DB25500E72992 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F4EFB701F1DB25500E72992 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4F4EFB891F1DB25500E72992 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4F4EFB8A1F1DB25500E72992 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4F4EFB8C1F1DB25500E72992 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 768U6R42T9;
+				INFOPLIST_FILE = ApproxCam/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Shining.ApproxCam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		4F4EFB8D1F1DB25500E72992 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 768U6R42T9;
+				INFOPLIST_FILE = ApproxCam/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Shining.ApproxCam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		4F4EFB8F1F1DB25500E72992 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 768U6R42T9;
+				INFOPLIST_FILE = ApproxCamTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Shining.ApproxCamTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ApproxCam.app/ApproxCam";
+			};
+			name = Debug;
+		};
+		4F4EFB901F1DB25500E72992 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 768U6R42T9;
+				INFOPLIST_FILE = ApproxCamTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Shining.ApproxCamTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ApproxCam.app/ApproxCam";
+			};
+			name = Release;
+		};
+		4F4EFB921F1DB25500E72992 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 768U6R42T9;
+				INFOPLIST_FILE = ApproxCamUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Shining.ApproxCamUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = ApproxCam;
+			};
+			name = Debug;
+		};
+		4F4EFB931F1DB25500E72992 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 768U6R42T9;
+				INFOPLIST_FILE = ApproxCamUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Shining.ApproxCamUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = ApproxCam;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4F4EFB5E1F1DB25500E72992 /* Build configuration list for PBXProject "ApproxCam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F4EFB891F1DB25500E72992 /* Debug */,
+				4F4EFB8A1F1DB25500E72992 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F4EFB8B1F1DB25500E72992 /* Build configuration list for PBXNativeTarget "ApproxCam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F4EFB8C1F1DB25500E72992 /* Debug */,
+				4F4EFB8D1F1DB25500E72992 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4F4EFB8E1F1DB25500E72992 /* Build configuration list for PBXNativeTarget "ApproxCamTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F4EFB8F1F1DB25500E72992 /* Debug */,
+				4F4EFB901F1DB25500E72992 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4F4EFB911F1DB25500E72992 /* Build configuration list for PBXNativeTarget "ApproxCamUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F4EFB921F1DB25500E72992 /* Debug */,
+				4F4EFB931F1DB25500E72992 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4F4EFB5B1F1DB25500E72992 /* Project object */;
+}
