@@ -75,6 +75,12 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         return "/" + String(timeInterval) + ".dng"
     }
     
+    func getCurrentTimeForDng(ID: Int) -> String{
+        let now = Date()
+        let timeInterval:TimeInterval = now.timeIntervalSince1970
+        return "/" + String(timeInterval) + "-part" + String(ID) + ".dng"
+    }
+    
     func getCurrentTimeForJpeg() -> String{
         let now = Date()
         let timeInterval:TimeInterval = now.timeIntervalSince1970
@@ -104,13 +110,9 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
                 return
         }
         
-        //dngData.subdata(in: 0..<)
-        print(dngData.count)
-        
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let fileName = getCurrentTimeForDng()
         let dngFileURL = URL(string: "file://\(documentsPath + fileName)")
-        print(dngFileURL!)
         do {
             try dngData.write(to: dngFileURL!)
         } catch let error as NSError {
@@ -122,7 +124,6 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         PHPhotoLibrary.shared().performChanges( {
             let creationRequest = PHAssetCreationRequest.forAsset()
             let creationOptions = PHAssetResourceCreationOptions()
-            //creationOptions.shouldMoveFile = true                 //To save all .dng under application directory
             creationRequest.addResource(with: .photo, data: jpegData, options: nil)
             creationRequest.addResource(with: .alternatePhoto, fileURL: dngFileURL!, options: creationOptions)
             },
@@ -134,29 +135,26 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
             try jpegData.write(to: fileURL)
         }
         catch {}
-        uploadFile(bucketName: "rawphoto", remoteName: remoteName, fileURL: fileURL)
         
+        //uploadFile(bucketName: "rawphoto", remoteName: remoteName, fileURL: fileURL)
         uploadFile(bucketName: "rawphoto", remoteName: fileName, fileURL: dngFileURL!)
     }
     
     func uploadFile(bucketName: String,
                     remoteName: String,
                     fileURL: URL){
-        print("Start uploading")
-        let accessKey = "W5ADYDYKLZXRJ0M8WXWU"
-        let secretKey = "rS8w6ecFo1DfL1xQ50S90WNZpeBwOuQOb3EkomNr"
-        
-        let credentialsProvider = AWSStaticCredentialsProvider(accessKey: accessKey, secretKey: secretKey)
-        let configuration = AWSServiceConfiguration(region: .USEast1, endpoint: AWSEndpoint(region: .USEast1, service: .S3, url: URL(string: "http://192.168.199.204:9000")),credentialsProvider: credentialsProvider)
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: .APNortheast1, identityPoolId: "ap-northeast-1:b631a38e-d447-456a-89d0-bba44586c1f0")
+        let configuration = AWSServiceConfiguration(region: .APNortheast1, credentialsProvider: credentialsProvider)
+        let cognitoId = credentialsProvider.identityId
+        print(cognitoId!)
         
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         let transferManager = AWSS3TransferManager.default()
         
         let uploadRequest = AWSS3TransferManagerUploadRequest()!
-        uploadRequest.bucket = "rawphoto"
+        uploadRequest.bucket = "approxcam-rawphoto"
         uploadRequest.body = fileURL
         uploadRequest.key = remoteName
-        uploadRequest.acl = .publicRead
         
         transferManager.upload(uploadRequest)
         transferManager.upload(uploadRequest).continueWith { (task: AWSTask<AnyObject>) -> Any? in
