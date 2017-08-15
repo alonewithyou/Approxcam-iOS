@@ -129,14 +129,16 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
             },
             completionHandler: completionHandler)
         
+        /*
         let remoteName = getCurrentTimeForJpeg()
         let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(remoteName)
         do {
             try jpegData.write(to: fileURL)
         }
         catch {}
-        
-        //uploadFile(bucketName: "rawphoto", remoteName: remoteName, fileURL: fileURL)
+        uploadFile(bucketName: "rawphoto", remoteName: remoteName, fileURL: fileURL)
+        */
+ 
         uploadFile(bucketName: "rawphoto", remoteName: fileName, fileURL: dngFileURL!)
     }
     
