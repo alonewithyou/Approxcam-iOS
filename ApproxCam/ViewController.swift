@@ -148,7 +148,6 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         let credentialsProvider = AWSCognitoCredentialsProvider(regionType: .APNortheast1, identityPoolId: "ap-northeast-1:b631a38e-d447-456a-89d0-bba44586c1f0")
         let configuration = AWSServiceConfiguration(region: .APNortheast1, credentialsProvider: credentialsProvider)
         let cognitoId = credentialsProvider.identityId
-        print(cognitoId!)
         
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         let transferManager = AWSS3TransferManager.default()
