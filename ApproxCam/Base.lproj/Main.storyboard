@@ -22,33 +22,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mMB-b7-JPT" customClass="UIImageView">
-                                <rect key="frame" x="36" y="50" width="303" height="509"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="96e-Wj-rHt">
-                                <rect key="frame" x="91" y="589" width="193" height="38"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Capture"/>
-                                <connections>
-                                    <action selector="capturePicture" destination="BYZ-38-t0r" eventType="touchUpInside" id="gfy-0s-Hpx"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QHq-YK-Ah5">
+                                <rect key="frame" x="53" y="67" width="273" height="516.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Click for candidate labels" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ao6-bk-80x">
+                                        <rect key="frame" x="35" y="0.0" width="203" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmF-3q-Y3h">
+                                        <rect key="frame" x="92.5" y="26.5" width="88" height="28"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="13"/>
+                                        <state key="normal" title="Another group"/>
+                                        <connections>
+                                            <action selector="getCandidateLabels:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qFl-bC-JpQ"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mMB-b7-JPT" customClass="UIImageView">
+                                        <rect key="frame" x="0.0" y="59.5" width="273" height="414"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ZzK-C4-rsF">
+                                        <rect key="frame" x="16" y="478.5" width="241" height="38"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="96e-Wj-rHt">
+                                                <rect key="frame" x="0.0" y="0.0" width="108" height="38"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="   Capture   "/>
+                                                <connections>
+                                                    <action selector="capturePicture" destination="BYZ-38-t0r" eventType="touchUpInside" id="gfy-0s-Hpx"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JiK-bB-141">
+                                                <rect key="frame" x="133" y="0.0" width="108" height="38"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="   Upload   "/>
+                                                <connections>
+                                                    <action selector="UploadPicture" destination="BYZ-38-t0r" eventType="touchUpInside" id="j4N-Sb-9zL"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ZzK-C4-rsF" firstAttribute="top" secondItem="mMB-b7-JPT" secondAttribute="bottom" constant="15" id="Y3X-aJ-vsb"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="96e-Wj-rHt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="75" id="1hu-P2-lOR"/>
-                            <constraint firstItem="mMB-b7-JPT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="LzD-ui-8as"/>
-                            <constraint firstItem="96e-Wj-rHt" firstAttribute="top" secondItem="mMB-b7-JPT" secondAttribute="bottom" constant="30" id="QJ4-VW-zm8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="96e-Wj-rHt" secondAttribute="trailing" constant="75" id="Za4-1u-L4M"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="96e-Wj-rHt" secondAttribute="bottom" constant="40" id="gpW-bk-8dX"/>
-                            <constraint firstItem="mMB-b7-JPT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="gpf-hl-rnE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="mMB-b7-JPT" secondAttribute="trailing" constant="20" id="qrk-3r-3OO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mMB-b7-JPT" secondAttribute="trailing" constant="35" id="bIt-fm-SRg"/>
+                            <constraint firstItem="mMB-b7-JPT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="35" id="qwM-JO-z9Q"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="candidateLabels" destination="ao6-bk-80x" id="8fR-WK-UKM"/>
                         <outlet property="preViewImage" destination="mMB-b7-JPT" id="g3W-oj-cwa"/>
                     </connections>
                 </viewController>

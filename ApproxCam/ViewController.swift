@@ -21,9 +21,14 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     var rawPhotoOutputBuffer: CMSampleBuffer!
     var capturedImage: UIImageView!
     
+    var fileName = ""
+    var URLToUpload = URL(string: "")
+    var FilenameToUpload = ""
+    var BucketToUploadS3 = "approxcam-rawphoto"
+    var BucketToUploadMinio = "rawphoto"
+    
     @IBOutlet weak var preViewImage: UIImageView!
-    //@IBOutlet weak var captureImageView: UIImageView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSession()
@@ -59,9 +64,9 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
     
     @IBAction func capturePicture() {
-        print(outputObject.availablePhotoPixelFormatTypes)  //ip7:[875704422, 875704438, 1111970369]
-        print(outputObject.availableRawPhotoPixelFormatTypes)
-
+        //print(outputObject.availablePhotoPixelFormatTypes)  //ip7:[875704422, 875704438, 1111970369]
+        //print(outputObject.availableRawPhotoPixelFormatTypes)
+        
         let rawFormatType = outputObject.availableRawPhotoPixelFormatTypes.first as! OSType
         let photoSettings = AVCapturePhotoSettings(rawPixelFormatType: rawFormatType,
                                                    processedFormat: [AVVideoCodecKey : AVVideoCodecJPEG])
@@ -69,22 +74,16 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         
     }
     
-    func getCurrentTimeForDng() -> String{
+    func getFilenameForLocal() -> String{
         let now = Date()
         let timeInterval:TimeInterval = now.timeIntervalSince1970
         return "/" + String(timeInterval) + ".dng"
     }
     
-    func getCurrentTimeForDng(ID: Int) -> String{
+    func getFilenameForRemoteS3() -> String{
         let now = Date()
         let timeInterval:TimeInterval = now.timeIntervalSince1970
-        return "/" + String(timeInterval) + "-part" + String(ID) + ".dng"
-    }
-    
-    func getCurrentTimeForJpeg() -> String{
-        let now = Date()
-        let timeInterval:TimeInterval = now.timeIntervalSince1970
-        return String(timeInterval) + ".jpg"
+        return "default/" + String(timeInterval) + ".dng"
     }
     
     func saveRAWPlusJPEGPhotoLibrary(_ rawSampleBuffer: CMSampleBuffer,
@@ -100,7 +99,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
                 completionHandler?(false, nil)
                 return
         }
-            
+        
         guard let dngData = AVCapturePhotoOutput.dngPhotoDataRepresentation(
             forRawSampleBuffer: rawSampleBuffer,
             previewPhotoSampleBuffer: rawPreviewSampleBuffer)
@@ -111,8 +110,10 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         }
         
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        let fileName = getCurrentTimeForDng()
+        fileName = getFilenameForLocal()
+        FilenameToUpload = getFilenameForRemoteS3()
         let dngFileURL = URL(string: "file://\(documentsPath + fileName)")
+        URLToUpload = dngFileURL!
         do {
             try dngData.write(to: dngFileURL!)
         } catch let error as NSError {
@@ -120,42 +121,79 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
             completionHandler?(false, error)
             return
         }
-            
+        
         PHPhotoLibrary.shared().performChanges( {
             let creationRequest = PHAssetCreationRequest.forAsset()
             let creationOptions = PHAssetResourceCreationOptions()
             creationRequest.addResource(with: .photo, data: jpegData, options: nil)
             creationRequest.addResource(with: .alternatePhoto, fileURL: dngFileURL!, options: creationOptions)
-            },
-            completionHandler: completionHandler)
+        },
+                                                completionHandler: completionHandler)
         
-        /*
-        let remoteName = getCurrentTimeForJpeg()
-        let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(remoteName)
-        do {
-            try jpegData.write(to: fileURL)
-        }
-        catch {}
-        uploadFile(bucketName: "rawphoto", remoteName: remoteName, fileURL: fileURL)
-        */
- 
-        uploadFile(bucketName: "rawphoto", remoteName: fileName, fileURL: dngFileURL!)
+        //uploadFile(bucketName: BucketToUpload, remoteName: FilenameToUpload, fileURL: URLToUpload!)
     }
     
-    func uploadFile(bucketName: String,
+    @IBOutlet weak var candidateLabels: UILabel!
+    
+    @IBAction func getCandidateLabels(_ sender: UIButton) {
+        candidateLabels.text = String("Dog")!
+    }
+    
+    
+    @IBAction func UploadPicture() {
+        //uploadFileToS3(bucketName: BucketToUploadS3, remoteName: FilenameToUpload, fileURL: URLToUpload!)
+        uploadFileToMinio(bucketName: BucketToUploadMinio, remoteName: fileName, fileURL: URLToUpload!)
+    }
+    
+    func uploadFileToMinio(bucketName: String,
+                        remoteName: String,
+                        fileURL: URL){
+        
+        let accessKey = "shining"
+        let secretKey = "abdefghi"
+        
+        let credentialsProvider = AWSStaticCredentialsProvider(accessKey: accessKey, secretKey: secretKey)
+        let configuration = AWSServiceConfiguration(region: .USEast1, endpoint: AWSEndpoint(region: .USEast1, service: .S3, url: URL(string:"http://169.254.143.227:9000")),credentialsProvider: credentialsProvider)
+        
+        AWSServiceManager.default().defaultServiceConfiguration = configuration
+        
+        let uploadRequest = AWSS3TransferManagerUploadRequest()!
+        uploadRequest.body = fileURL
+        uploadRequest.key = remoteName
+        uploadRequest.bucket = bucketName
+        
+        let transferManager = AWSS3TransferManager.default()
+        transferManager.upload(uploadRequest)
+        transferManager.upload(uploadRequest).continueWith { (task: AWSTask<AnyObject>) -> Any? in
+            
+            if let error = task.error {
+                print("Upload failed with error: (\(error.localizedDescription))")
+            }
+            
+            if task.result != nil {
+                let url = AWSS3.default().configuration.endpoint.url
+                let publicURL = url?.appendingPathComponent(uploadRequest.bucket!).appendingPathComponent(uploadRequest.key!)
+                print("Uploaded to:\(String(describing: publicURL!))")
+            }
+            
+            return nil
+        }
+    }
+    
+    func uploadFileToS3(bucketName: String,
                     remoteName: String,
                     fileURL: URL){
         let credentialsProvider = AWSCognitoCredentialsProvider(regionType: .APNortheast1, identityPoolId: "ap-northeast-1:b631a38e-d447-456a-89d0-bba44586c1f0")
         let configuration = AWSServiceConfiguration(region: .APNortheast1, credentialsProvider: credentialsProvider)
-        let cognitoId = credentialsProvider.identityId
         
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         let transferManager = AWSS3TransferManager.default()
         
         let uploadRequest = AWSS3TransferManagerUploadRequest()!
-        uploadRequest.bucket = "approxcam-rawphoto"
+        uploadRequest.bucket = bucketName
         uploadRequest.body = fileURL
         uploadRequest.key = remoteName
+        print(remoteName)
         
         transferManager.upload(uploadRequest)
         transferManager.upload(uploadRequest).continueWith { (task: AWSTask<AnyObject>) -> Any? in
@@ -216,18 +254,18 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
             print("Error in capture process: \(String(describing: error))")
             return
         }
-    
+        
         if let rawSampleBuffer = self.rawSampleBuffer, let photoSampleBuffer = self.photoSampleBuffer {
             saveRAWPlusJPEGPhotoLibrary(rawSampleBuffer,
-                                    rawPreviewSampleBuffer: self.rawPreviewPhotoSampleBuffer,
-            photoSampleBuffer: photoSampleBuffer,
-            previewSampleBuffer: self.previewPhotoSampleBuffer,
-            completionHandler: { success, error in
-                if success {
-                    print("Successfully added.")
-                } else {
-                    print("Error while adding \(String(describing: error))")
-                }
+                                        rawPreviewSampleBuffer: self.rawPreviewPhotoSampleBuffer,
+                                        photoSampleBuffer: photoSampleBuffer,
+                                        previewSampleBuffer: self.previewPhotoSampleBuffer,
+                                        completionHandler: { success, error in
+                                            if success {
+                                                print("Successfully added.")
+                                            } else {
+                                                print("Error while adding \(String(describing: error))")
+                                            }
             }
             )
         }
