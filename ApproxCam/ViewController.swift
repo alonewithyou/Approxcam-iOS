@@ -141,8 +141,8 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     
     @IBAction func UploadPicture() {
-        //uploadFileToS3(bucketName: BucketToUploadS3, remoteName: FilenameToUpload, fileURL: URLToUpload!)
-        uploadFileToMinio(bucketName: BucketToUploadMinio, remoteName: fileName, fileURL: URLToUpload!)
+        uploadFileToS3(bucketName: BucketToUploadS3, remoteName: FilenameToUpload, fileURL: URLToUpload!)
+        //uploadFileToMinio(bucketName: BucketToUploadMinio, remoteName: fileName, fileURL: URLToUpload!)
     }
     
     func uploadFileToMinio(bucketName: String,
