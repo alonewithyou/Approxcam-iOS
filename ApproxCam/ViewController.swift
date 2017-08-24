@@ -77,7 +77,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     func getFilenameForLocal() -> String{
         let now = Date()
         let timeInterval:TimeInterval = now.timeIntervalSince1970
-        return "/" + String(timeInterval) + ".dng"
+        return String(timeInterval) + ".dng"
     }
     
     func getFilenameForRemoteS3() -> String{
@@ -112,7 +112,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         fileName = getFilenameForLocal()
         FilenameToUpload = getFilenameForRemoteS3()
-        let dngFileURL = URL(string: "file://\(documentsPath + fileName)")
+        let dngFileURL = URL(string: "file://\(documentsPath + "/" + fileName)")
         URLToUpload = dngFileURL!
         do {
             try dngData.write(to: dngFileURL!)
@@ -141,8 +141,8 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     
     @IBAction func UploadPicture() {
-        uploadFileToS3(bucketName: BucketToUploadS3, remoteName: FilenameToUpload, fileURL: URLToUpload!)
-        //uploadFileToMinio(bucketName: BucketToUploadMinio, remoteName: fileName, fileURL: URLToUpload!)
+        //uploadFileToS3(bucketName: BucketToUploadS3, remoteName: FilenameToUpload, fileURL: URLToUpload!)
+        uploadFileToMinio(bucketName: BucketToUploadMinio, remoteName: fileName, fileURL: URLToUpload!)
     }
     
     func uploadFileToMinio(bucketName: String,
@@ -153,7 +153,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         let secretKey = "abdefghi"
         
         let credentialsProvider = AWSStaticCredentialsProvider(accessKey: accessKey, secretKey: secretKey)
-        let configuration = AWSServiceConfiguration(region: .USEast1, endpoint: AWSEndpoint(region: .USEast1, service: .S3, url: URL(string:"http://169.254.143.227:9000")),credentialsProvider: credentialsProvider)
+        let configuration = AWSServiceConfiguration(region: .USEast1, endpoint: AWSEndpoint(region: .USEast1, service: .S3, url: URL(string:"http://10.106.166.13:9000")),credentialsProvider: credentialsProvider)
         
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         
