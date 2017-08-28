@@ -136,7 +136,97 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     @IBOutlet weak var candidateLabels: UILabel!
     
     @IBAction func getCandidateLabels(_ sender: UIButton) {
-        candidateLabels.text = String("Dog")!
+        let Labels = [ "airplane",
+                       "apple",
+                       "backpack",
+                       "banana",
+                       "baseball bat",
+                       "baseball glove",
+                       "bear",
+                       "bed",
+                       "bench",
+                       "bicycle",
+                       "bird",
+                       "boat",
+                       "book",
+                       "bottle",
+                       "bowl",
+                       "broccoli",
+                       "bus",
+                       "cake",
+                       "car",
+                       "carrot",
+                       "cat",
+                       "cell phone",
+                       "chair",
+                       "clock",
+                       "couch",
+                       "cow",
+                       "cup",
+                       "dining table",
+                       "dog",
+                       "donut",
+                       "elephant",
+                       "fire hydrant",
+                       "fork",
+                       "frisbee",
+                       "giraffe",
+                       "hair drier",
+                       "handbag",
+                       "horse",
+                       "hot dog",
+                       "keyboard",
+                       "kite",
+                       "knife",
+                       "laptop",
+                       "microwave",
+                       "motorcycle",
+                       "mouse",
+                       "orange",
+                       "oven",
+                       "parking meter",
+                       "person",
+                       "pizza",
+                       "potted plant",
+                       "refrigerator",
+                       "remote",
+                       "sandwich",
+                       "scissors",
+                       "sheep",
+                       "sink",
+                       "skateboard",
+                       "skis",
+                       "snowboard",
+                       "sofa",
+                       "spoon",
+                       "sports ball",
+                       "stop sign",
+                       "suitcase",
+                       "surfboard",
+                       "teddy bear",
+                       "tennis racket",
+                       "tie",
+                       "toaster",
+                       "toilet",
+                       "toothbrush",
+                       "traffic light",
+                       "train",
+                       "truck",
+                       "tv/monitor",
+                       "umbrella",
+                       "vase",
+                       "wine glass",
+                       "zebra" ]
+        var candidates = ""
+        var index = 0
+        for i in 1...4{
+            index = Int(arc4random_uniform(UInt32(81)))
+            candidates = candidates + Labels[index]
+            if (i < 4){
+                candidates = candidates + "/"
+            }
+        }
+        candidateLabels.text = candidates
     }
     
     
@@ -149,11 +239,11 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
                         remoteName: String,
                         fileURL: URL){
         
-        let accessKey = "shining"
-        let secretKey = "abdefghi"
+        let accessKey = "W5ADYDYKLZXRJ0M8WXWU"
+        let secretKey = "rS8w6ecFo1DfL1xQ50S90WNZpeBwOuQOb3EkomNr"
         
         let credentialsProvider = AWSStaticCredentialsProvider(accessKey: accessKey, secretKey: secretKey)
-        let configuration = AWSServiceConfiguration(region: .USEast1, endpoint: AWSEndpoint(region: .USEast1, service: .S3, url: URL(string:"http://10.106.166.13:9000")),credentialsProvider: credentialsProvider)
+        let configuration = AWSServiceConfiguration(region: .USEast1, endpoint: AWSEndpoint(region: .USEast1, service: .S3, url: URL(string:"http://172.20.10.5:9000")),credentialsProvider: credentialsProvider)
         
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         
@@ -168,12 +258,21 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
             
             if let error = task.error {
                 print("Upload failed with error: (\(error.localizedDescription))")
+                let alertFail = UIAlertController(title: "Uploading failed with error : (\(error.localizedDescription))", message: nil, preferredStyle: .alert)
+                self.present(alertFail, animated: true, completion: nil)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2){
+                    self.presentedViewController?.dismiss(animated: false, completion: nil)
+                }
             }
-            
             if task.result != nil {
                 let url = AWSS3.default().configuration.endpoint.url
                 let publicURL = url?.appendingPathComponent(uploadRequest.bucket!).appendingPathComponent(uploadRequest.key!)
                 print("Uploaded to:\(String(describing: publicURL!))")
+                let alertSucc = UIAlertController(title: "Uploading succeeded!", message: nil, preferredStyle: .alert)
+                self.present(alertSucc, animated: true, completion: nil)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2){
+                    self.presentedViewController?.dismiss(animated: false, completion: nil)
+                }
             }
             
             return nil
