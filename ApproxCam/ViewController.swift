@@ -299,12 +299,22 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
             
             if let error = task.error {
                 print("Upload failed with error: (\(error.localizedDescription))")
+                let alertFail = UIAlertController(title: "Uploading failed with error : (\(error.localizedDescription))", message: nil, preferredStyle: .alert)
+                self.present(alertFail, animated: true, completion: nil)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2){
+                    self.presentedViewController?.dismiss(animated: false, completion: nil)
+                }
             }
             
             if task.result != nil {
                 let url = AWSS3.default().configuration.endpoint.url
                 let publicURL = url?.appendingPathComponent(uploadRequest.bucket!).appendingPathComponent(uploadRequest.key!)
                 print("Uploaded to:\(String(describing: publicURL!))")
+                let alertSucc = UIAlertController(title: "Uploading succeeded!", message: nil, preferredStyle: .alert)
+                self.present(alertSucc, animated: true, completion: nil)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2){
+                    self.presentedViewController?.dismiss(animated: false, completion: nil)
+                }
             }
             
             return nil
