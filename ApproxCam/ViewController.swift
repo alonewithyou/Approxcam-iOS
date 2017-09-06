@@ -282,7 +282,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     func uploadFileToS3(bucketName: String,
                     remoteName: String,
                     fileURL: URL){
-        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: .APNortheast1, identityPoolId: "ap-northeast-1:b631a38e-d447-456a-89d0-bba44586c1f0")
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: .APNortheast1, identityPoolId: "########")
         let configuration = AWSServiceConfiguration(region: .APNortheast1, credentialsProvider: credentialsProvider)
         
         AWSServiceManager.default().defaultServiceConfiguration = configuration
